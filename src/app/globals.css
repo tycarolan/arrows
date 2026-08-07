@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/*
+ * The five shared TaioTech tokens. Every surface in the workshop starts from
+ * this near-black base so the apps and the hub read as one thing.
+ *
+ * Always dark. The reason here is the board: an arrow's state is carried almost
+ * entirely by a thin stroke and a faint fill, and the gap between "idle" and
+ * "blocking" is a few percent of luminance. That margin survives on a near-black
+ * ground and collapses on a light one, so a second palette would not be a
+ * reskin — it would be a second set of state colours to get right.
+ *
+ * `--refuse` is this app's own, added below rather than by editing the five.
+ * It is the red of a tap that was refused, and it is deliberately not `--accent`:
+ * the two appear at the same moment on the same board, one on the arrow that
+ * would not move and one on whatever stopped it, and they have to be told apart
+ * instantly.
+ */
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --line: #27272a;
+  --accent: #f97316;
+
+  --refuse: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-refuse: var(--refuse);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * The board fills the viewport and the controls sit on the bottom edge, so every
+ * gesture the browser wants to claim — pull to refresh, rubber-band scroll,
+ * double-tap zoom — lands on top of a tap that was meant for an arrow.
+ */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
