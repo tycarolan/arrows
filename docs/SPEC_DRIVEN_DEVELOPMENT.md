@@ -35,7 +35,7 @@ The numbering has gaps because it used to be six steps. There is no
 review-spec step and no separate implement-spec command: for apps this size a
 second review pass on the spec itself and a dedicated implementation command are
 overhead the scope doesn't justify. Skipping straight from plan to
-implementation is fine. `TaioTech/cornerman-vision` still runs the older
+implementation is fine. `tycarolan/cornerman-vision` still runs the older
 six-command pipeline — that is history, not a second standard.
 
 ### Spec vs Plan
